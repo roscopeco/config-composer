@@ -1,0 +1,21 @@
+plugins {
+    id 'java-library'
+}
+
+dependencies {
+    implementation project(":annotations")
+
+    implementation group: 'org.ow2.asm', name: 'asm', version: '9.2'
+}
+
+publishing {
+
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId 'config-composer-runtime-processor'
+            pom {
+                name = 'Config Composer runtime annotation processor'
+            }
+        }
+    }
+}

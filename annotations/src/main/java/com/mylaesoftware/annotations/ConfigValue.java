@@ -22,7 +22,7 @@ import java.lang.annotation.Target;
  * @author Claudio Scandura
  */
 @Target({ElementType.METHOD})
-@Retention(RetentionPolicy.SOURCE)
+@Retention(RetentionPolicy.RUNTIME)
 public @interface ConfigValue {
 
   /**

@@ -97,17 +97,14 @@ public class RuntimeConfigComposer {
 
   public static <T> ConfigComposerFactory<T> factory(Class<T> clz) {
     return ensureSingleton().generateFactory(clz);
-
   }
 
   public <T> T wireConfig(Class<T> clz, Config config) {
-    // IntelliJ bug - ecj can't cope without the intermediate variable :|
-    final ConfigComposerFactory<T> factory = factory(generate(clz));
-    return factory.wire(config);
+    return factory(clz).wire(config);
   }
 
   public <T> ConfigComposerFactory<T> generateFactory(Class<T> clz) {
-    return new DefaultConfigComposerFactory<>(clz);
+    return new DefaultConfigComposerFactory<>(generate(clz));
   }
 
   private <T> Class<? extends T> generate(Class<T> clz) {
